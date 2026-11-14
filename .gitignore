@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+.env.local
+.vercel/
+.pytest_cache/
+.venv/
+.vercel
+.env*
+.env*.local
