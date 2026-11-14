@@ -65,7 +65,7 @@ _PAGE = r"""<!doctype html>
         <select id="provider"><option value="">All providers</option></select>
       </label>
     </div>
-    <div id="slots"><p class="muted" style="margin-top:12px">Loading slotsâ€¦</p></div>
+    <div id="slots"><p class="muted" style="margin-top:12px">Loading slots…</p></div>
 
     <form id="book-form" autocomplete="on">
       <p id="chosen" style="margin-bottom:10px"></p>
@@ -130,7 +130,7 @@ function renderSlots() {
   $("slots").innerHTML = Object.entries(days).map(([day, list]) => `
     <div class="day"><h3>${esc(day)}</h3><div class="slots">
       ${list.map((s) => `<button type="button" class="slot ${chosen && chosen.id === s.id ? "selected" : ""}" data-id="${esc(s.id)}" ${s.available ? "" : "disabled"}>
-        ${fmtTime(new Date(s.start))} â€“ ${fmtTime(new Date(s.end))}<small>${esc(s.provider)}${s.available ? "" : " Â· booked"}</small></button>`).join("")}
+        ${fmtTime(new Date(s.start))} – ${fmtTime(new Date(s.end))}<small>${esc(s.provider)}${s.available ? "" : " · booked"}</small></button>`).join("")}
     </div></div>`).join("");
 }
 
@@ -181,12 +181,12 @@ function showConfirmation(b, slot) {
   const start = new Date(slot.start);
   $("confirmation").style.display = "block";
   $("confirmation").innerHTML = `
-    <h2>You're booked âœ“</h2>
+    <h2>You're booked ✓</h2>
     <p class="muted">A record of your appointment:</p>
     <dl>
       <dt>Booking ID</dt><dd><code>${esc(b.id)}</code></dd>
       <dt>Provider</dt><dd>${esc(slot.provider)}</dd>
-      <dt>When</dt><dd>${esc(fmtDay(start))}, ${esc(fmtTime(start))} â€“ ${esc(fmtTime(new Date(slot.end)))}</dd>
+      <dt>When</dt><dd>${esc(fmtDay(start))}, ${esc(fmtTime(start))} – ${esc(fmtTime(new Date(slot.end)))}</dd>
       <dt>Name</dt><dd>${esc(b.name)}</dd>
       <dt>Email</dt><dd>${esc(b.email)}</dd>
       <dt>Status</dt><dd><span class="pill">${esc(b.status)}</span></dd>
